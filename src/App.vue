@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <header class="header">
+    <Header msg="Vue Pizza Web-App " />
+  </header>
+  <div class="main">
+    <Options msg="option1" @addToCart="addToCart" />
+  </div>
+  <Cart :data="cartData"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header.vue";
+import Options from "./components/Options.vue";
+import Cart from "./components/Cart.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+    components: {
+    Header,
+    Options,
+    Cart
+  },
+  data(){
+    return {
+      cartData : [],
+    }
+  },
+  methods: {
+    addToCart (pizza){
+      console.log(pizza)
+      this.cartData.push(pizza)
+    }
   }
-}
+};
 </script>
 
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
